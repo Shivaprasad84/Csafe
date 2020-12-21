@@ -1,5 +1,6 @@
 name: Main Workflow
 
+
 on:
   pull_request:
   push:
@@ -12,5 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: npm check
-      run: npm --version
+    - name: npm setup
+      run: npm install
+    
+    - name: make soft link
+      run: ln -s todo.sh todo
+    
+    - name: Run Automated Tests
+      run: npm test
